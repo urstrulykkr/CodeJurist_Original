@@ -20,13 +20,19 @@ class Problems(models.Model):
 
 
 class Solutions(models.Model):
-    FINAL_VERDICT = (
+    SUCCESS='SUCCESS'
+    COMPILATION_ERROR='COMPILATION ERROR'
+    WRONG_OUTPUT='WRONG OUTPUT'
+    TIME_LIMIT_EXCEEDED='TIME LIMIT EXCEEDED'
+    RUNTIME_ERROR='RUNTIME ERROR'
+    
+    FINAL_VERDICT = [
         ('SUCCESS', 'SUCCESS'),
         ('COMPILATION_ERROR', 'COMPILATION ERROR'),
         ('WRONG_OUTPUT', 'WRONG OUTPUT'),
         ('TIME_LIMIT_EXCEEDED', 'TIME LIMIT EXCEEDED'),
         ('RUNTIME_ERROR', 'RUNTIME ERROR')
-    )
+    ]
     problem = models.ForeignKey(Problems, on_delete=models.CASCADE)
     verdict = models.CharField(max_length=50, choices=FINAL_VERDICT)
     submission_timestamp = models.DateTimeField(auto_now_add=True, blank=True)
