@@ -18,7 +18,7 @@ def compile_using_python(request, var_id):
             actual = output.stdout
             if(output.returncode != 0):
                 verdict = Solutions.COMPILATION_ERROR
-            elif actual = output_expected:
+            elif actual == output_expected:
                 verdict = Solutions.SUCCESS
             elif subprocess.TimeoutExpired:
                 verdict = Solutions.TIME_LIMIT_EXCEEDED
