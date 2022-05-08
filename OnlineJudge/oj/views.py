@@ -13,12 +13,12 @@ def home(request):
 def leaderboard(request):
     return render(request, 'leaderboard.html')
 
-def problem(request, var_id):
-    question = Problems.objects.get(id=var_id)
+def problem(request, variable_id):
+    question = Problems.objects.get(id=variable_id)
     type_comp = ['None', 'Python', 'C++', 'Java']
     context = {
         'var0': question.id,
-        'var1': question.problem_statement,
+        'var1': question.statement,
         'var2': type_comp
     }
     return render(request, 'problem.html', context)
