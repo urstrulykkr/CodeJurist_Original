@@ -8,6 +8,3 @@ def problems(request):
     }
     return render(request, 'problems.html', context)
 
-
-def about(request):
-    return render(request, 'about.html', {'title': 'About_title'})
