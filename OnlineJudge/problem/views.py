@@ -51,5 +51,6 @@ def run_testcases(sub: Submission, testcases):
 
     sub.verdict = output['verdict']
     sub.time = output['time']
+    # TODO find a way to calculate memory
     connection.close()
     sub.save()

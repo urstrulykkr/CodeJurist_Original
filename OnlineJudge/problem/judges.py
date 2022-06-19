@@ -9,8 +9,7 @@ from user.models import Submission
 
 from . import constants as _
 
-# configure this
-__client = docker.from_env() 
+__client = docker.from_env()
 
 def judge_gcc(submission: Submission, testcases):
     '''
