@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+from psycopg2 import extensions
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,6 +22,37 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-p&#qp#1xd8**u)q8cvpy0+@cz0yid#2zw2bmip9a5u1lv997^t'
+# DB_NAME = os.environ.get('CCDB_NAME')
+DB_NAME = 'ccdb'
+
+# DB_USERNAME = os.environ.get('CCDB_USERNAME')
+DB_USERNAME = 'ccuser'
+
+# DB_USERPASS = os.environ.get('CCDB_USERPASS')
+DB_USERPASS = 'admin'
+
+# HOST = os.environ.get('HOST')
+HOST = 'localhost',
+
+# BASE_URL = os.environ.get('BASE_URL')
+BASE_URL = '/'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = [HOST]
+
+
+# SSL (Uncomment them later)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+
+#### My Local Trail ####
+SECURE_SSL_REDIRECT=False
+SESSION_COOKIE_SECURE=False
+CSRF_COOKIE_SECURE=False
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,6 +64,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'home.apps.HomeConfig',
     'problem.apps.ProblemConfig',
     'user.apps.UserConfig',
     'django.contrib.auth',
@@ -56,7 +89,7 @@ ROOT_URLCONF = 'CodeJurist.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,9 +110,17 @@ WSGI_APPLICATION = 'CodeJurist.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DB_NAME,
+        'USER': DB_USERNAME,
+        'PASSWORD': DB_USERPASS,
+        'HOST': 'localhost',
+        'PORT': '5432',
+        # 'CONN_MAX_AGE': 30,
+    },
+    'OPTIONS': {
+        'isolation_level': extensions.ISOLATION_LEVEL_SERIALIZABLE,
+    },
 }
 
 
@@ -120,7 +161,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

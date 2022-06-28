@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
-from codecourt.settings import BASE_URL
+from CodeJurist.settings import BASE_URL
 from user.models import Submission
 
 def register(request):
