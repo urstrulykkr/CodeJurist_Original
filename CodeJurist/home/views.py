@@ -9,3 +9,5 @@ def problems(request):
         'BASE_URL': BASE_URL,
     }
     return render(request, 'problems.html', context)
+
+    # End of Views
