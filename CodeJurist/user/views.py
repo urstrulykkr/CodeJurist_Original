@@ -2,17 +2,17 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
-from CodeJurist.settings import BASE_URL
 from user.models import Submission
+
 
 def register(request):
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
         password1 = request.POST['password1']
-        confirm_password = request.POST['password2']
+        password2 = request.POST['password2']
 
-        if password1 == confirm_password:
+        if password1 == password2:
 
             if User.objects.filter(username=username).exists():
                 messages.info(request, 'Username already taken')
@@ -34,8 +34,8 @@ def register(request):
             return redirect('register_n')
 
     else:
-        context = {'title': 'Register - CodeCourt', 'BASE_URL': BASE_URL}
-        return render(request, 'register.html', context)
+        return render(request, 'register.html', {'title': 'Register - CodeJurist'})
+
 
 def login(request):
     if request.method == 'POST':
@@ -52,24 +52,18 @@ def login(request):
             messages.info(request, 'invalid credentials')
             return redirect('login_n')
     else:
-        context = {'title': 'Login - CodeCourt', 'BASE_URL': BASE_URL}
-        return render(request, 'login.html', context)
+        return render(request, 'login.html', {'title': 'Login - CodeJurist'})
 
 
 def logout(request):
     auth.logout(request)
     return redirect('home')
 
+
 @login_required(login_url='login_n')
 def submissions(request):
     if request.method == 'POST':
         pass
 
-    submissions = Submission.objects.filter(user=request.user).order_by('-id')
-    context = {
-        'title': 'Submissions - CodeCourt',
-        'BASE_URL': BASE_URL,
-        'submissions': submissions,
-    }
-
-    return render(request, 'submissions.html', context)
+    submissions = Submission.objects.all()
+    return render(request, 'submissions.html', {'title': 'Submissions - CodeJurist', 'submissions': submissions[:100]})

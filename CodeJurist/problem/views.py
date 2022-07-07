@@ -3,7 +3,6 @@ from multiprocessing import Process
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.db import connection
-from CodeJurist.settings import BASE_URL
 
 from user.models import Submission
 from problem.constants import Judge
@@ -32,7 +31,6 @@ def problem(request, prob_id):
         'problem': problem,
         'samples': TestCase.objects.filter(problem_id=problem.id, is_sample=True),
         'judges': Submission.JUDGE_CHOICES,
-        'BASE_URL': BASE_URL,
     }
     return render(request, 'problem.html', context)
 
