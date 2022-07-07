@@ -10,22 +10,25 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+import environ
 from pathlib import Path
 from psycopg2 import extensions
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-p&#qp#1xd8**u)q8cvpy0+@cz0yid#2zw2bmip9a5u1lv997^t'
+SECRET_KEY = env('SECRET_KEY')
 # DB_NAME = 'ccdb'
 # DB_USERNAME = 'ccuser'
 # DB_USERPASS = 'admin'
-# HOST = '*',
-# BASE_URL = '/'
+HOST = '*',
+BASE_URL = '/'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -33,15 +36,6 @@ DEBUG = False
 # ALLOWED_HOSTS = [HOST]
 ALLOWED_HOSTS = []
 
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-
-# SECURE_CONTENT_TYPE_NOSNIFF = False
-# SECURE_BROWSER_XSS_FILTER = False
-# SESSION_COOKIE_SECURE = False
-# CSRF_COOKIE_SECURE = False
-# SECURE_SSL_REDIRECT = False
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -102,8 +96,11 @@ WSGI_APPLICATION = 'CodeJurist.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASS'),
         'CONN_MAX_AGE': 30,
+
     }
     # 'OPTIONS': {
     #     'isolation_level': extensions.ISOLATION_LEVEL_SERIALIZABLE,
