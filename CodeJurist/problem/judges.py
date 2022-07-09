@@ -66,7 +66,7 @@ def judge_python(submission: Submission, testcases, is3: bool):
     )
 
 
-def __chief_judge(submission, testcases, ext, clear, run, cont_name, docker_image, compile):
+def __chief_judge(submission, testcases, ext, clear, run, cont_name, docker_image, compile=None):
     filename = str(submission.id) + '.' + ext
     hostfile = _.CODES_DIR + filename
 

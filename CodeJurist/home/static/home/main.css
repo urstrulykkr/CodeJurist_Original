@@ -1,3 +1,4 @@
+
 body {
     background: #fafafa;
     color: #333333;
@@ -11,11 +12,12 @@ body {
   ul {
     margin: 0;
   }
-  
+
   .bg-steel {
     background-color: #5f788a;
+
   }
-  
+
   .site-header .navbar-nav .nav-link {
     color: #cbd5db;
   }
@@ -41,7 +43,6 @@ body {
   }
   
   a.article-title:hover {
-    color: slateBlue;
     text-decoration: none;
   }
   
@@ -113,3 +114,9 @@ body {
   th {
     background-color: lightgray;
   }
+
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
+  
