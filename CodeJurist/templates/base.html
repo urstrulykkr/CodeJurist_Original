@@ -29,7 +29,7 @@
 
           <div class="navbar-nav">
             {% if user.is_authenticated %}
-            <button onclick="changeTheme()">Dark/Light Mode</button>
+            <button onclick="changeTheme()">Dark Mode</button>
             <a class="nav-item nav-link" href="{% url 'submissions' %}">{{ user.username }}</a>
             <a class="nav-item nav-link" href="{% url 'logout_n' %}">Logout</a>
             {% else %}
