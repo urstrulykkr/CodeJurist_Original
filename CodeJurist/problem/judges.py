@@ -67,6 +67,10 @@ def judge_python(submission: Submission, testcases, is3: bool):
 
 
 def __chief_judge(submission, testcases, ext, clear, run, cont_name, docker_image, compile=None):
+     '''
+    The `compile` param can be `None` because languages like Python does not need compiler whereas
+    C/C++ does need one.
+    '''
     filename = str(submission.id) + '.' + ext
     hostfile = _.CODES_DIR + filename
 
