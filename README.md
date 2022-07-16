@@ -9,7 +9,7 @@
             So `ZOMBIE CODE` :zombie:, CodeJurist is watching you :crossed_swords: !
             
             
-# :bulb: Have any Product Improvement Ideas ?! Come pitch in! :bouquet: 
+# :bulb: Have Product Improvement Ideas ? Come pitch in! :bouquet: 
 
 - Report your ideas [here](https://github.com/urstrulykkr/CodeJurist/issues) :memo:
 - Please present in detailed description by emphasising on the value it generates to the user :surfing_man: 
