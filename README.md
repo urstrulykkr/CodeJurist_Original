@@ -22,7 +22,7 @@
     - UI :art: : HTML5, CSS3.
     - Backend :mechanic: : Django, Docker.
     - DataBase :file_cabinet: : PostgreSQL.
-    - Cloud :cloud: : nginx, gunicorn, netlify platform
+    - Cloud :cloud: : nginx, gunicorn, Heroku platform
 
 
 # :memo: I found some bugs or issues. Where do I report?
