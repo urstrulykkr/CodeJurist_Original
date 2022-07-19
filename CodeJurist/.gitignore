@@ -1,4 +1,5 @@
 .env
+ccdb
 CodeJurist/.env
 *.pyc
 *~
@@ -12,4 +13,3 @@ code/in.*
 .vscode
 .key
 session/*.py
-ccdb
