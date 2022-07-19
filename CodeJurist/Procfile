@@ -1,0 +1,1 @@
+web: gunicorn CodeJurist.wsgi --access-logfile -
