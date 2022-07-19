@@ -1,5 +1,5 @@
-.env/*
-CodeJurist/.env*
+.env/
+CodeJurist/.env
 *.pyc
 *~
 __pycache__
